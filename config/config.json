@@ -19,5 +19,6 @@
     "protocol": "postgres",
     "dialectOptions": {
         "ssl": true
+    }
   }
 }
