@@ -59,10 +59,7 @@ const userController = {
       user.update({
         isAdmin: !user.isAdmin,
       }).then(user => {
-<<<<<<< HEAD
         req.flash('success_messages', 'user was successfully to update')
-=======
->>>>>>> 32a541cb8da04705c6a28741a0c2ba820c7e415e
         res.redirect('/admin/users')
       })
     })
