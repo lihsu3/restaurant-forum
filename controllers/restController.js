@@ -68,6 +68,22 @@ const restController = {
         })
       })
     })
+  },
+
+  getRestaurantDashboard: (req, res) => {
+    Restaurant.findByPk(
+      req.params.id, 
+      {include: [Category, Comment]}
+    ).then(restaurant => {
+      Comment.findAndCountAll(
+        {where: {RestaurantId: req.params.id}}
+      ).then(comments => {
+        return res.render('dashboard', {
+          restaurant: restaurant,
+          comments: comments
+        })
+      })
+    })
   }
 }
 
