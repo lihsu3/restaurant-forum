@@ -69,4 +69,6 @@ module.exports = (app, passport) => {
 
   app.post('/like/:restaurantId', authenticated, userController.addLike)
   app.delete('/like/:restaurantId', authenticated, userController.removeLike)
+
+  app.get('/users/top', authenticated, userController.getTopUser)//place before 'GET /users/:id'
 }
