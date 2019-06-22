@@ -39,6 +39,7 @@ const userController = {
   },
 
   signIn: (req, res) => {
+    // console.log(req.session.passport.user)
     req.flash('success_messages', '成功登入！')
     res.redirect('/restaurants')
   },
