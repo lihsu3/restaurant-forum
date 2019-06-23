@@ -71,4 +71,7 @@ module.exports = (app, passport) => {
   app.delete('/like/:restaurantId', authenticated, userController.removeLike)
 
   app.get('/users/top', authenticated, userController.getTopUser)//place before 'GET /users/:id'
+
+  app.post('/following/:userId', authenticated, userController.addFollowing)
+  app.delete('/following/:userId', authenticated, userController.removeFollowing)
 }
