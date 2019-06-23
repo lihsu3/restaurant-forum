@@ -52,22 +52,22 @@ const userController = {
     res.redirect('/signin')
   },
 
-  editUser: (req, res) => {
-    return User.findAll().then(users => {
-        return res.render('admin/users', { users: users })
-    })  
-  },
+  // editUser: (req, res) => {
+  //   return User.findAll().then(users => {
+  //       return res.render('admin/users', { users: users })
+  //   })  
+  // },
 
-  putUser: (req, res) => {
-    return User.findByPk(req.params.id).then(user => {
-      user.update({
-        isAdmin: !user.isAdmin,
-      }).then(user => {
-        req.flash('success_messages', 'user was successfully to update')
-        res.redirect('/admin/users')
-      })
-    })
-  },
+  // putUser: (req, res) => {
+  //   return User.findByPk(req.params.id).then(user => {
+  //     user.update({
+  //       isAdmin: !user.isAdmin,
+  //     }).then(user => {
+  //       req.flash('success_messages', 'user was successfully to update')
+  //       res.redirect('/admin/users')
+  //     })
+  //   })
+  // },
 
   addFavorite: (req, res) => {
     return Favorite.create({
