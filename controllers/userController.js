@@ -5,6 +5,8 @@ const User = db.User
 const Favorite = db.Favorite
 const Like = db.Like
 const Followship = db.Followship
+const Comment = db.Comment
+const Restaurant = db.Restaurant
 const imgur = require('imgur-node-api')
 const IMGUR_CLIENT_ID = '50e3bcb6876d539'
 
@@ -140,8 +142,10 @@ const userController = {
         // Category, 
         // { model: User, as: 'FavoritedUsers' },
         // { model: User, as: 'LikedUsers' },
-        // { model: Comment, include: [User] }
+        { model: Comment, include: [Restaurant] }
       ]}).then(user => {
+        console.log(user.Comments[0])
+        const restCount = user.Comments.length//it is actually no. of comments not restaurants
         // const isFavorited = restaurant.FavoritedUsers.map(d => d.id).includes(req.user.id)
         // const isLiked = restaurant.LikedUsers.map(d => d.id).includes(req.user.id)
         // restaurant.increment({
@@ -149,7 +153,8 @@ const userController = {
         // }).then(restaurant => {
           return res.render('user', { 
             user: user, 
-            reqUId: req.user.id
+            reqUId: req.user.id,
+            restCount: restCount
             // isFavorited: isFavorited, 
             // isLiked: isLiked 
           })

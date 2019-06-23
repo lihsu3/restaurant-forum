@@ -11,3 +11,18 @@
   </div>
   <hr>
 </div>
+
+<div class="card">
+  <h5 class="card-header">{{restCount}}已評論餐廳</h5>
+  <div class="card-body">
+    <div class="row" style="text-align: center;">
+      {{#each user.Comments}}
+        <div class="col-2">
+          <a href="/restaurants/{{this.Restaurant.id}}">
+            <img class="" src="{{this.Restaurant.image}}" width="140px" height="140px">
+          </a>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
