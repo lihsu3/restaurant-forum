@@ -140,12 +140,15 @@ const userController = {
     return User.findByPk(req.params.id, {
       include: [
         // Category, 
-        // { model: User, as: 'FavoritedUsers' },
+        // Restaurant,
+        // { model: Restaurant, as: 'FavoritedRestaurants' },
         // { model: User, as: 'LikedUsers' },
         { model: Comment, include: [Restaurant] }
       ]}).then(user => {
-        console.log(user.Comments[0])
-        const restCount = user.Comments.length//it is actually no. of comments not restaurants
+        // console.log(user.Comments[0])
+        console.log(user)
+
+        const restCount = user.Comments.length//this is actually no. of comments not restaurants
         // const isFavorited = restaurant.FavoritedUsers.map(d => d.id).includes(req.user.id)
         // const isLiked = restaurant.LikedUsers.map(d => d.id).includes(req.user.id)
         // restaurant.increment({
