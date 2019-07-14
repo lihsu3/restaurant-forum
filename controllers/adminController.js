@@ -5,7 +5,6 @@ const User = db.User
 const fs = require('fs')
 const imgur = require('imgur-node-api')
 const IMGUR_CLIENT_ID = '50e3bcb6876d539'
-
 const adminService = require('../services/adminService')
 
 const adminController = {
@@ -62,10 +61,9 @@ const adminController = {
   },
 
   getRestaurant: (req, res) => {
-	  return Restaurant.findByPk(req.params.id, {include: [Category]}).then(restaurant => {
-	  	// console.log(restaurant.Category)
-	    return res.render('admin/restaurant', { restaurant: restaurant })
-	  })
+  	adminService.getRestaurant(req, res, (data) => {
+			return res.render('admin/restaurant', data)
+		})
 	},
 
 	editRestaurant: (req, res) => {
